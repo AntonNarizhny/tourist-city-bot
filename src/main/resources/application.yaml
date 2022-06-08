@@ -6,7 +6,7 @@ localeTag: ru-RU
 telegrambot:
   botUsername: "@tourist_city_bot"
   botToken: 5484695616:AAF_w99NFVUsBzZaQQbUVLcb4WDOWif9ZX4
-  botPath: https://eedc-109-254-254-23.eu.ngrok.io
+  botPath: https://3dfa-109-254-254-23.eu.ngrok.io
 
 spring:
 
