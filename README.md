@@ -16,30 +16,29 @@
 ## Подготовка 🔨
 Обратитесь к [BotFather](https://t.me/BotFather), создайте своего бота и получите токен.  
 После Вам понадобится СУБД PostgreSQL. Отройте pgAdmin и создайте базу данных с названием "bot".  
-Также необходим webhook https адрес, его можно получить с помощью программы [ngrok](https://ngrok.com/download).   
-Telegram будет отправлять на него запросы, которые после будет перенаправляться на Ваш локальный сервер.  
+Также необходим webhook https адрес, его можно получить с помощью программы [ngrok](https://ngrok.com/download). Создавать его нужно для порта 8081. Если хотите использовать другой порт, тогда измените порт в файле application.yaml.   
+Telegram будет отправлять на него запросы, которые после будут перенаправляться на Ваш локальный сервер.  
 Webhook https адрес необходимо будет установить для Telegram с помощью команды: https://api.telegram.org/bot[токен]/setWebhook?url=[webhook_https_адрес].
 ## Запуск проекта
 1. Скопируйте проект к себе с помощью git clone.
-2. В файле application.yaml добавьте данные для работы с ботом (username бота, токен и webhook https адрес)   
-и данные для подключения к базе данных (имя пользователя, пароль и URL).
+2. В файле application.yaml добавьте данные для работы с ботом (username бота, токен и webhook https адрес) и данные для подключения к базе данных (имя пользователя, пароль и URL).
 ```java
 server:
-port: 8081
+port: 8081 - порт
 
 localeTag: ru-RU
 
 telegrambot:
-    botUsername: "@tourist_city_bot" - username Вашего бота
-    botToken: 5484695616:AAF_w99NFVUsBzZaQQbUVLcb4WDOWif9ZX4 - токен бота
-    botPath: https://eedc-109-254-254-23.eu.ngrok.io - webhook https адрес
+    botUsername: "@bot_username" - username Вашего бота
+    botToken: telegram_bot_token_from_BotFather - токен бота
+    botPath: https://webhook_path - webhook https адрес
 
 spring:
 
     datasource:
         driver-class-name: org.postgresql.Driver
-        username: ${username} - имя пользователя PostgreSQL
-        password: ${password} - пароль пользователя PostgreSQL
+        username: db_username - имя пользователя PostgreSQL
+        password: db_password - пароль пользователя PostgreSQL
         url: jdbc:postgresql://localhost:5432/bot - URL для подключения к базе даныых (добавьте порт и адрес, если у Вас другие)
     jpa:
         properties.hibernate:
@@ -68,3 +67,4 @@ spring:
 ![Image of Maint](images/add_information_about_city.png)
 ![Image of Maint](images/update_information_about_city.png)
 ![Image of Maint](images/delete_information_about_city.png)
+![Image of Maint](images/bot_profile.png)
